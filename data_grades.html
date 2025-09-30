@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Systems - Gradebook</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .header {
+            background-color: white;
+            padding: 15px 30px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .course-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-code {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        .course-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .open-btn {
+            background-color: white;
+            border: 1px solid #0073e6;
+            color: #0073e6;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .open-btn:hover {
+            background-color: #f0f8ff;
+        }
+
+        .nav-tabs {
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            padding: 0 30px;
+        }
+
+        .nav-tab {
+            padding: 12px 15px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-size: 14px;
+            color: #555;
+            position: relative;
+            margin-right: 5px;
+        }
+
+        .nav-tab:hover {
+            color: #333;
+        }
+
+        .nav-tab.active {
+            border-bottom-color: #6a1b9a;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .nav-tab .badge {
+            background-color: #ddd;
+            border-radius: 10px;
+            padding: 2px 7px;
+            font-size: 11px;
+            margin-left: 5px;
+            color: #555;
+        }
+
+        .nav-tab.active .badge {
+            background-color: #6a1b9a;
+            color: white;
+        }
+
+        .content-area {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .user-section {
+            background-color: white;
+            padding: 20px 25px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .user-name {
+            font-size: 15px;
+            color: #333;
+        }
+
+        .grade-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .grade-label {
+            font-size: 14px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .info-icon {
+            width: 16px;
+            height: 16px;
+            border: 1px solid #999;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #999;
+            cursor: help;
+        }
+
+        .current-grade {
+            background-color: #4caf50;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .grades-section {
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 15px 25px;
+            border-bottom: 3px solid #6a1b9a;
+            font-size: 16px;
+            font-weight: 600;
+            color: #6a1b9a;
+        }
+
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .grades-table thead {
+            background-color: #f9f9f9;
+        }
+
+        .grades-table th {
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .grades-table th:hover {
+            background-color: #f0f0f0;
+        }
+
+        .grades-table th::after {
+            content: '⇅';
+            position: absolute;
+            right: 8px;
+            color: #999;
+            font-size: 11px;
+        }
+
+        .grades-table tbody tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        .grades-table tbody tr:hover {
+            background-color: #fafafa;
+        }
+
+        .grades-table td {
+            padding: 15px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .item-cell {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .item-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .icon-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #6a1b9a;
+            border-radius: 50%;
+            margin: 6px;
+        }
+
+        .icon-document {
+            width: 20px;
+            height: 24px;
+            background-color: white;
+            border: 1.5px solid #666;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .icon-document::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 4px;
+            right: 4px;
+            height: 1.5px;
+            background-color: #666;
+        }
+
+        .icon-document::after {
+            content: '';
+            position: absolute;
+            top: 9px;
+            left: 4px;
+            right: 4px;
+            height: 1.5px;
+            background-color: #666;
+        }
+
+        .icon-zybooks {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .icon-zybooks::before {
+            content: 'Z';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .item-details {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .item-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .item-subtitle {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .grade-badge {
+            background-color: #4caf50;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .view-btn {
+            background-color: #2d2d2d;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .view-btn:hover {
+            background-color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="course-info">
+            <div class="course-code">FACS CPSC 33000-002</div>
+            <div class="course-title">Database Systems</div>
+        </div>
+        <button class="open-btn">OPEN</button>
+    </div>
+
+    <nav class="nav-tabs">
+        <div class="nav-tab">Content</div>
+        <div class="nav-tab">Calendar</div>
+        <div class="nav-tab">Announcements <span class="badge">4</span></div>
+        <div class="nav-tab">Discussions <span class="badge">1</span></div>
+        <div class="nav-tab active">Gradebook <span class="badge">13</span></div>
+        <div class="nav-tab">Messages</div>
+        <div class="nav-tab">Groups</div>
+        <div class="nav-tab">Achievements</div>
+    </nav>
+
+    <div class="content-area">
+        <div class="user-section">
+            <div class="user-info">
+                <div class="user-icon">👤</div>
+                <div class="user-name">Jon Spansail</div>
+            </div>
+            <div class="grade-display">
+                <div class="grade-label">
+                    Current Grade
+                    <span class="info-icon">i</span>
+                </div>
+                <div class="current-grade">98.48%</div>
+            </div>
+        </div>
+
+        <div class="grades-section">
+            <div class="section-header">Grades</div>
+            <table class="grades-table">
+                <thead>
+                    <tr>
+                        <th style="width: 40%;">Item Name</th>
+                        <th style="width: 15%;">Due Date</th>
+                        <th style="width: 15%;">Status</th>
+                        <th style="width: 15%;">Grade</th>
+                        <th style="width: 15%;">Results</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="item-cell">
+                                <div class="item-icon">
+                                    <div class="icon-dot"></div>
+                                </div>
+                                <div class="item-details">
+                                    <div class="item-name">Introductions</div>
+                                    <div class="item-subtitle">First participated on 8/25/25</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>9/2/25</td>
+                        <td>Graded</td>
+                        <td><span class="grade-badge">87.5</span></td>
+                        <td><button class="view-btn">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-cell">
+                                <div class="item-icon">
+                                    <div class="icon-document"></div>
+                                </div>
+                                <div class="item-details">
+                                    <div class="item-name">Getting to Know You</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>9/2/25</td>
+                        <td>Graded</td>
+                        <td><span class="grade-badge">97.5</span></td>
+                        <td><button class="view-btn">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-cell">
+                                <div class="item-icon">
+                                    <div class="icon-zybooks"></div>
+                                </div>
+                                <div class="item-details">
+                                    <div class="item-name">zyBooks - week 1</div>
+                                    <div class="item-subtitle">1 attempt submitted</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>9/2/25</td>
+                        <td>Graded</td>
+                        <td><span class="grade-badge">87.5</span></td>
+                        <td><button class="view-btn">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-cell">
+                                <div class="item-icon">
+                                    <div class="icon-document"></div>
+                                </div>
+                                <div class="item-details">
+                                    <div class="item-name">Quiz 1</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>9/2/25</td>
+                        <td>Graded</td>
+                        <td><span class="grade-badge">87.5</span></td>
+                        <td><button class="view-btn">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-cell">
+                                <div class="item-icon">
+                                    <div class="icon-zybooks"></div>
+                                </div>
+                                <div class="item-details">
+                                    <div class="item-name">zyBooks - week 2</div>
+                                    <div class="item-subtitle">1 attempt submitted</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>9/8/25</td>
+                        <td>Graded</td>
+                        <td><span class="grade-badge">87.5</span></td>
+                        <td><button class="view-btn">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-cell">
+                                <div class="item-icon">
+                                    <div class="icon-document"></div>
+                                </div>
+                                <div class="item-details">
+                                    <div class="item-name">Quiz 2</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>9/8/25</td>
+                        <td>Graded</td>
+                        <td><span class="grade-badge">87.5</span></td>
+                        <td><button class="view-btn">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-cell">
+                                <div class="item-icon">
+                                    <div class="icon-zybooks"></div>
+                                </div>
+                                <div class="item-details">
+                                    <div class="item-name">zyBooks - week 3</div>
+                                    <div class="item-subtitle">1 attempt submitted</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>9/15/25</td>
+                        <td>Graded</td>
+                        <td><span class="grade-badge">87.5</span></td>
+                        <td><button class="view-btn">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="item-cell">
+                                <div class="item-icon">
+                                    <div class="icon-document"></div>
+                                </div>
+                                <div class="item-details">
+                                    <div class="item-name">SQL SELECT Assignment</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>9/15/25</td>
+                        <td>Graded</td>
+                        <td><span class="grade-badge">10/10</span></td>
+                        <td><button class="view-btn">View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
