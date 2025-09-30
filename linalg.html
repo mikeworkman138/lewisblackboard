@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Linear Algebra - Blackboard Learn</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="flex">
+            <!-- Sidebar -->
+            <div class="fixed left-0 top-0 h-full w-60 bg-bb-gray z-50">
+                <div class="p-4 border-b border-gray-600">
+                    <div class="flex items-center space-x-3">
+                        <div
+                            class="w-10 h-10 bg-bb-red flex items-center justify-center text-white font-bold"
+                        >
+                            L
+                        </div>
+                        <div class="text-white text-sm">Lewis University</div>
+                    </div>
+                </div>
+
+                <nav class="mt-4">
+                    <a
+                        href="/institution/"
+                        class="sidebar-item"
+                        data-testid="nav-institution-page"
+                    >
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2-2v2m8-2v2"
+                            />
+                        </svg>
+                        <span class="ml-3">Institution Page</span>
+                    </a>
+
+                    <a
+                        href="/profile/"
+                        class="sidebar-item"
+                        data-testid="nav-jon-spansail"
+                    >
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                            />
+                        </svg>
+                        <span class="ml-3">Jon Spansail</span>
+                    </a>
+
+                    <a
+                        href="/activity/"
+                        class="sidebar-item"
+                        data-testid="nav-activity"
+                    >
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"
+                            />
+                        </svg>
+                        <span class="ml-3">Activity</span>
+                    </a>
+
+                    <a
+                        href="/courses/"
+                        class="sidebar-item"
+                        data-testid="nav-courses"
+                    >
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                            />
+                        </svg>
+                        <span class="ml-3">Courses</span>
+                    </a>
+
+                    <a
+                        href="/organizations/"
+                        class="sidebar-item"
+                        data-testid="nav-organizations"
+                    >
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                            />
+                        </svg>
+                        <span class="ml-3">Organizations</span>
+                    </a>
+
+                    <a
+                        href="/calendar/"
+                        class="sidebar-item"
+                        data-testid="nav-calendar"
+                    >
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                            />
+                        </svg>
+                        <span class="ml-3">Calendar</span>
+                    </a>
+
+                    <a
+                        href="/messages/"
+                        class="sidebar-item"
+                        data-testid="nav-messages"
+                    >
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                            />
+                        </svg>
+                        <span class="ml-3">Messages</span>
+                    </a>
+
+                    <a
+                        href="/assist/"
+                        class="sidebar-item"
+                        data-testid="nav-assist"
+                    >
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                        </svg>
+                        <span class="ml-3">Assist</span>
+                    </a>
+
+                    <a
+                        href="/tools/"
+                        class="sidebar-item"
+                        data-testid="nav-tools"
+                    >
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                            />
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                        </svg>
+                        <span class="ml-3">Tools</span>
+                    </a>
+
+                    <a href="/" class="sidebar-item" data-testid="nav-sign-out">
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                            />
+                        </svg>
+                        <span class="ml-3">Sign Out</span>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Main Content -->
+            <div class="ml-60 min-h-screen bg-white flex-1">
+                <!-- Course Header -->
+                <div class="bg-white border-b">
+                    <div class="px-6 py-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div
+                                    class="text-sm text-gray-600"
+                                    data-testid="course-code"
+                                >
+                                    FA25-MATH-22000-002
+                                </div>
+                                <h1
+                                    class="text-2xl font-normal text-gray-900"
+                                    data-testid="course-title"
+                                >
+                                    Linear Algebra
+                                </h1>
+                            </div>
+                            <div
+                                class="bg-blue-500 text-white px-4 py-2 rounded text-sm font-medium"
+                                data-testid="course-status"
+                            >
+                                OPEN
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Navigation Tabs -->
+                    <div class="px-6">
+                        <nav class="flex space-x-8">
+                            <a
+                                href="#"
+                                class="pb-3 border-b-2 border-blue-500 text-blue-600 font-medium"
+                                data-testid="tab-content"
+                            >
+                                Content
+                            </a>
+                            <a
+                                href="#"
+                                class="pb-3 text-gray-600 hover:text-gray-900"
+                                data-testid="tab-calendar"
+                                >Calendar</a
+                            >
+                            
+                            <a
+                                href="lin_grade.html"
+                                class="pb-3 text-gray-600 hover:text-gray-900"
+                                data-testid="tab-gradebook"
+                            >
+                                Gradebook
+                                <span
+                                    class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full ml-1"
+                                    >2</span
+                                >
+                            </a>
+                            <a
+                                href="#"
+                                class="pb-3 text-gray-600 hover:text-gray-900"
+                                data-testid="tab-messages"
+                            >
+                                Messages
+                                <span
+                                    class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full ml-1"
+                                    >1</span
+                                >
+                            </a>
+                            <a
+                                href="#"
+                                class="pb-3 text-gray-600 hover:text-gray-900"
+                                data-testid="tab-groups"
+                                >Groups</a
+                            >
+                            <a
+                                href="#"
+                                class="pb-3 text-gray-600 hover:text-gray-900"
+                                data-testid="tab-achievements"
+                                >Achievements</a
+                            >
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="flex">
+                    <!-- Main Content Area -->
+                    <div class="flex-1 p-6">
+                        <div data-testid="content-tab">
+                            <div class="flex items-center justify-between mb-6">
+                                <h2
+                                    class="text-xl font-medium"
+                                    data-testid="heading-course-content"
+                                >
+                                    Course Content
+                                </h2>
+                                <button
+                                    class="p-2 hover:bg-gray-100 rounded"
+                                    data-testid="button-search-content"
+                                >
+                                    <svg
+                                        class="h-5 w-5 text-gray-400"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="space-y-2">
+                                <!-- Zoom Meeting -->
+                                <div class="expandable-section">
+                                    <div
+                                        class="flex items-center p-4 cursor-pointer hover:bg-gray-50"
+                                        data-testid="section-zoom"
+                                    >
+                                        <div
+                                            class="w-2 h-2 bg-gray-400 rounded-full mr-3"
+                                        ></div>
+                                        <svg
+                                            class="h-5 w-5 text-blue-500 mr-3"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                                            />
+                                        </svg>
+                                        <span class="flex-1 font-medium"
+                                            >Zoom Meeting</span
+                                        >
+                                    </div>
+                                </div>
+
+                                <!-- Syllabus -->
+                                <div class="expandable-section">
+                                    <div
+                                        class="flex items-center p-4 cursor-pointer hover:bg-gray-50"
+                                        data-testid="section-syllabus"
+                                    >
+                                        <div
+                                            class="w-2 h-2 bg-gray-400 rounded-full mr-3"
+                                        ></div>
+                                        <svg
+                                            class="h-5 w-5 text-blue-500 mr-3"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                            />
+                                        </svg>
+                                        <span class="flex-1 font-medium"
+                                            >Syllabus - University Level
+                                            Information</span
+                                        >
+                                    </div>
+                                </div>
+
+                                <!-- Course Materials -->
+                                <div class="expandable-section">
+                                    <div
+                                        class="flex items-center p-4 cursor-pointer hover:bg-gray-50"
+                                        data-testid="section-materials"
+                                    >
+                                        <div
+                                            class="w-2 h-2 bg-gray-400 rounded-full mr-3"
+                                        ></div>
+                                        <svg
+                                            class="h-5 w-5 text-blue-500 mr-3"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
+                                            />
+                                        </svg>
+                                        <span class="flex-1 font-medium"
+                                            >Course Materials</span
+                                        >
+                                        <svg
+                                            class="h-4 w-4 text-gray-400"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <!-- Python Resources -->
+                                <div class="expandable-section">
+                                    <div
+                                        class="flex items-center p-4 cursor-pointer hover:bg-gray-50"
+                                        data-testid="section-python"
+                                    >
+                                        <div
+                                            class="w-2 h-2 bg-gray-400 rounded-full mr-3"
+                                        ></div>
+                                        <svg
+                                            class="h-5 w-5 text-blue-500 mr-3"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
+                                            />
+                                        </svg>
+                                        <span class="flex-1 font-medium"
+                                            >Python Resources</span
+                                        >
+                                        <svg
+                                            class="h-4 w-4 text-gray-400"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <!-- Week 1 -->
+                                <div class="expandable-section">
+                                    <div
+                                        class="flex items-center p-4 cursor-pointer hover:bg-gray-50"
+                                        data-testid="section-week1"
+                                    >
+                                        <div
+                                            class="w-2 h-2 bg-gray-400 rounded-full mr-3"
+                                        ></div>
+                                        <svg
+                                            class="h-5 w-5 text-blue-500 mr-3"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
+                                            />
+                                        </svg>
+                                        <span class="flex-1 font-medium"
+                                            >Week 1</span
+                                        >
+                                        <svg
+                                            class="h-4 w-4 text-gray-400"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div class="expandable-section">
+                                    <div
+                                        class="flex items-center p-4 cursor-pointer hover:bg-gray-50"
+                                        data-testid="section-week1"
+                                    >
+                                        <div
+                                            class="w-2 h-2 bg-gray-400 rounded-full mr-3"
+                                        ></div>
+                                        <svg
+                                            class="h-5 w-5 text-blue-500 mr-3"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
+                                            />
+                                        </svg>
+                                        <span class="flex-1 font-medium"
+                                            >Week 2</span
+                                        >
+                                        <svg
+                                            class="h-4 w-4 text-gray-400"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div class="expandable-section">
+                                    <div
+                                        class="flex items-center p-4 cursor-pointer hover:bg-gray-50"
+                                        data-testid="section-week1"
+                                    >
+                                        <div
+                                            class="w-2 h-2 bg-gray-400 rounded-full mr-3"
+                                        ></div>
+                                        <svg
+                                            class="h-5 w-5 text-blue-500 mr-3"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
+                                            />
+                                        </svg>
+                                        <span class="flex-1 font-medium"
+                                            >Week 3</span
+                                        >
+                                        <svg
+                                            class="h-4 w-4 text-gray-400"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div class="expandable-section">
+                                    <div
+                                        class="flex items-center p-4 cursor-pointer hover:bg-gray-50"
+                                        data-testid="section-week1"
+                                    >
+                                        <div
+                                            class="w-2 h-2 bg-gray-400 rounded-full mr-3"
+                                        ></div>
+                                        <svg
+                                            class="h-5 w-5 text-blue-500 mr-3"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
+                                            />
+                                        </svg>
+                                        <span class="flex-1 font-medium"
+                                            >Week 4</span
+                                        >
+                                        <svg
+                                            class="h-4 w-4 text-gray-400"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div class="expandable-section">
+                                    <div
+                                        class="flex items-center p-4 cursor-pointer hover:bg-gray-50"
+                                        data-testid="section-week1"
+                                    >
+                                        <div
+                                            class="w-2 h-2 bg-gray-400 rounded-full mr-3"
+                                        ></div>
+                                        <svg
+                                            class="h-5 w-5 text-blue-500 mr-3"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
+                                            />
+                                        </svg>
+                                        <span class="flex-1 font-medium"
+                                            >Week 5</span
+                                        >
+                                        <svg
+                                            class="h-4 w-4 text-gray-400"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M19 9l-7 7-7-7"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Sidebar -->
+                    <div class="w-80 bg-gray-50 p-6">
+                        <div class="mb-6">
+                            <h3
+                                class="font-medium text-gray-900 mb-3"
+                                data-testid="heading-course-faculty"
+                            >
+                                Course Faculty
+                            </h3>
+                            <div class="flex items-center space-x-3">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold"
+                                >
+                                    J
+                                </div>
+                                <div>
+                                    <div
+                                        class="font-medium text-gray-900"
+                                        data-testid="faculty-name"
+                                    >
+                                        Jason Elsinger
+                                    </div>
+                                    <div
+                                        class="text-sm text-gray-600"
+                                        data-testid="faculty-role"
+                                    >
+                                        INSTRUCTOR
+                                    </div>
+                                </div>
+                                <svg
+                                    class="h-5 w-5 text-gray-400 ml-auto"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3
+                                class="font-medium text-gray-900 mb-3"
+                                data-testid="heading-details-actions"
+                            >
+                                Details & Actions
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center text-sm">
+                                    <div
+                                        class="w-5 h-5 flex items-center justify-center mr-3"
+                                    >
+                                        👥
+                                    </div>
+                                    <div>
+                                        <div
+                                            class="font-medium"
+                                            data-testid="action-roster"
+                                        >
+                                            Roster
+                                        </div>
+                                        <a
+                                            href="#"
+                                            class="text-blue-600 hover:underline"
+                                            data-testid="link-view-everyone"
+                                        >
+                                            View everyone in your course
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center text-sm">
+                                    <div
+                                        class="w-5 h-5 flex items-center justify-center mr-3"
+                                    >
+                                        ℹ️
+                                    </div>
+                                    <div>
+                                        <div
+                                            class="font-medium"
+                                            data-testid="action-course-description"
+                                        >
+                                            Course Description
+                                        </div>
+                                        <a
+                                            href="#"
+                                            class="text-blue-600 hover:underline"
+                                            data-testid="link-view-description"
+                                        >
+                                            View the course description
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center text-sm">
+                                    <div
+                                        class="w-5 h-5 flex items-center justify-center mr-3"
+                                    >
+                                        📅
+                                    </div>
+                                    <div>
+                                        <div
+                                            class="font-medium"
+                                            data-testid="action-attendance"
+                                        >
+                                            Attendance
+                                        </div>
+                                        <a
+                                            href="#"
+                                            class="text-blue-600 hover:underline"
+                                            data-testid="link-view-attendance"
+                                        >
+                                            View your attendance
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center text-sm">
+                                    <div
+                                        class="w-5 h-5 flex items-center justify-center mr-3"
+                                    >
+                                        📚
+                                    </div>
+                                    <div>
+                                        <div
+                                            class="font-medium"
+                                            data-testid="action-books-tools"
+                                        >
+                                            Books & Tools
+                                        </div>
+                                        <a
+                                            href="#"
+                                            class="text-blue-600 hover:underline"
+                                            data-testid="link-view-tools"
+                                        >
+                                            View course & institution tools
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
