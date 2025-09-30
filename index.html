@@ -9,13 +9,7 @@
 </head>
 <body>
     
-        <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-            <div class="sm:mx-auto sm:w-full sm:max-w-md">
-                <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-                    <div class="text-center mb-8">
-                        <h1 class="text-2xl font-bold text-gray-900">Lewis University</h1>
-                        <h2 class="mt-2 text-xl text-gray-700">Blackboard Learn</h2>
-                    </div>
+      
 
                     <form id="login-form" class="space-y-6">
                         <div>
@@ -75,94 +69,11 @@
                             </p>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </template>
-
-    <template id="courses-template">
-        <div class="min-h-screen bg-gray-50">
-            <!-- Header -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex justify-between items-center py-6">
-                        <div class="flex items-center">
-                            <h1 class="text-3xl font-bold text-gray-900">Blackboard Learn</h1>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <span class="text-sm text-gray-700" id="user-greeting">Welcome, John Spansail</span>
-                            <button 
-                                id="logout-button" 
-                                class="text-sm text-lewis-red hover:text-lewis-red-dark"
-                                data-testid="button-logout"
-                            >
-                                Log Out
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-            <!-- Main Content -->
-            <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-                <div class="px-4 py-6 sm:px-0">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-6">My Courses</h2>
-                    <div id="courses-grid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        <!-- Courses will be rendered here -->
-                    </div>
-                </div>
-            </main>
-        </div>
-    </template>
-
-    <template id="course-detail-template">
-        <div class="min-h-screen bg-gray-50">
-            <!-- Header with sidebar toggle -->
-            <header class="bg-white shadow-sm border-b border-gray-200">
-                <div class="flex items-center justify-between p-4">
-                    <button id="sidebar-toggle" class="p-2 text-gray-600 hover:text-gray-900" data-testid="button-sidebar-toggle">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                    <div class="flex items-center space-x-4">
-                        <span class="text-sm text-gray-700">Welcome, John Spansail</span>
-                        <button id="logout-button-course" class="text-sm text-lewis-red hover:text-lewis-red-dark">Log Out</button>
-                    </div>
-                </div>
-            </header>
-
-            <div class="flex">
-                <!-- Sidebar -->
-                <aside id="sidebar" class="w-64 bg-white border-r border-gray-200 min-h-screen sidebar-open">
-                    <!-- Sidebar content will be rendered here -->
-                </aside>
-
-                <!-- Main content -->
-                <main class="flex-1 p-6">
-                    <div id="course-content">
-                        <!-- Course content will be rendered here -->
-                    </div>
-                </main>
-            </div>
-        </div>
-    </template>
-
-    <template id="gradebook-template">
-        <div class="bg-white rounded-lg shadow">
-            <div class="px-6 py-4 border-b border-gray-200">
-                <h3 class="text-lg font-medium text-gray-900">Gradebook</h3>
-            </div>
-            <div class="p-6">
-                <div id="gradebook-content">
-                    <!-- Gradebook content will be rendered here -->
-                </div>
-            </div>
-        </div>
-    </template>
+               
 
     <!-- JavaScript modules -->
     <script type="module" src="assets/js/app.js"></script>
 </body>
 
 </html>
+
